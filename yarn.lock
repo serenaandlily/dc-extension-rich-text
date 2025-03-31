@@ -4,7 +4,7 @@
 
 "@amplience/content-studio-sdk@^0.1.1":
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@amplience/content-studio-sdk/-/content-studio-sdk-0.1.1.tgz#06a6a639351e94c82636775b1c1236d39136ddff"
+  resolved "https://registry.npmjs.org/@amplience/content-studio-sdk/-/content-studio-sdk-0.1.1.tgz"
   integrity sha512-5I2fWK9sTm7ZhpBfMUZ3K3pRR7IdadR2DG9ZCWrZ7jM5QmVsj2lutlL4bLC1kZUCp7AUFxapBpoIE1bskJ3Nag==
   dependencies:
     message-event-channel "^1.1.0"
@@ -3804,17 +3804,17 @@ acorn-walk@^6.0.1:
 
 acorn@^5.5.3:
   version "5.7.4"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.4.tgz#3e8d8a9947d0599a1796d10225d7432f4a4acf5e"
+  resolved "https://registry.npmjs.org/acorn/-/acorn-5.7.4.tgz"
   integrity sha512-1D++VG7BhrtvQpNbBzovKNc1FLGGEE/oGe7b9xJm/RFHMBeUaUGpluV9RLjZa47YFdPcDAenEYuq9pQPcMdLJg==
 
 acorn@^6.0.1, acorn@^6.0.4, acorn@^6.2.1:
   version "6.4.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.2.tgz#35866fd710528e92de10cf06016498e47e39e1e6"
+  resolved "https://registry.npmjs.org/acorn/-/acorn-6.4.2.tgz"
   integrity sha512-XtGIhXwF8YM8bJhGxG5kXgjkEuNGLTkoYqVE+KMR+aspr4KGYmKYg7yUe3KghyQ9yheNwLnjmzh/7+gfDBmHCQ==
 
 acorn@^7.1.1:
   version "7.4.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
+  resolved "https://registry.npmjs.org/acorn/-/acorn-7.4.1.tgz"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
 address@1.1.2, address@^1.0.1:
@@ -11164,7 +11164,7 @@ merge2@^1.2.3:
 
 message-event-channel@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/message-event-channel/-/message-event-channel-1.1.0.tgz#8ff5798228432efd692f9f8fd3f749f35185c367"
+  resolved "https://registry.npmjs.org/message-event-channel/-/message-event-channel-1.1.0.tgz"
   integrity sha512-/6tBIQr8xmGiTkQZbLwiIxdsG21VcykYryk08cEdJdphEPYYCwi9ur/jSDfbQ6fY1urqo8TDZQ7dr7xJOrCqqw==
   dependencies:
     url-polyfill "^1.1.7"
@@ -16750,7 +16750,7 @@ url-parse@^1.4.3:
 
 url-polyfill@^1.1.7:
   version "1.1.12"
-  resolved "https://registry.yarnpkg.com/url-polyfill/-/url-polyfill-1.1.12.tgz#6cdaa17f6b022841b3aec0bf8dbd87ac0cd33331"
+  resolved "https://registry.npmjs.org/url-polyfill/-/url-polyfill-1.1.12.tgz"
   integrity sha512-mYFmBHCapZjtcNHW0MDq9967t+z4Dmg5CJ0KqysK3+ZbyoNOWQHksGCTWwDhxGXllkWlOc10Xfko6v4a3ucM6A==
 
 url@^0.11.0:

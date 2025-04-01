@@ -26,6 +26,7 @@ export default class App extends React.Component<{}, AppState> {
   }
 
   public componentDidMount(): void {
+    console.log("App mounted", this.state);
     this.handleConnect();
     this.handleInitRum();
   }

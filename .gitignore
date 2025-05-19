@@ -21,5 +21,5 @@ build
 .env.test.local
 .env.production.local
 Thumbs.db
-
+node_modules/
 *.log

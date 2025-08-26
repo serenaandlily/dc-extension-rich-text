@@ -19,15 +19,15 @@ function escape(text: string): string {
 }
 
 function cleanPositionMarkers(text: string): string {
-  return text.replace(/\\\\\\n|((\\n|\n)\d+)+/g, (match) =>
-    match === "\\\\\\n" ? "\\\\n" : match.startsWith("\\n") ? "\\n" : "\n\n"
+  const normalized = text.replace(/\\\\\\n/g, "\\\\n");
+  return normalized.replace(
+    /((?:\\n)|\r?\n)[ \t]*\d+[ \t]*(?=(?:\\n)|\r?\n|$)/g,
+    (_m, nl) => (nl === "\\n" ? "\\n" : "\n\n")
   );
 }
-
 const TextToMarkdown = {
   text(state: any, node: any): void {
-    const cleanedText = node.text ? cleanPositionMarkers(node.text) : node.text;
-    state.text(escape(cleanedText));
+    state.text(escape(node.text));
   },
 };
 
@@ -53,29 +53,29 @@ export function createMarkdownSerializer(
   );
 
   defaultMarkdownSerializer.marks.link = {
-    open(state: any, mark: any) {
+    open(state: any) {
       state.write("[");
-      state.delim = state.out.length;
+      state._linkOpen = state.out.length - 1;
       return "";
     },
     close(state: any, mark: any) {
       const { href, title, target, rel } = mark.attrs;
-      const linkText = state.out.slice(state.delim);
-      let result = `](${href}`;
+      const openIndex =
+        typeof state._linkOpen === "number"
+          ? state._linkOpen
+          : state.out.lastIndexOf("[");
 
-      if (title) result += ` "${title}"`;
-      result += ")";
+      const linkText = state.out.slice(openIndex + 1);
+      state.out = state.out.slice(0, openIndex);
 
       if (target || rel) {
         const relAttr = rel ? ` rel="${rel}"` : "";
-        result = `<a href="${href}"${title ? ` title="${title}"` : ""}${
+        return `<a href="${href}"${title ? ` title="${title}"` : ""}${
           target ? ` target="${target}"` : ""
         }${relAttr}>${linkText}</a>`;
-
-        state.out = state.out.slice(0, state.delim - 1);
       }
 
-      return result;
+      return `[${linkText}](${href}${title ? ` "${title}"` : ""})`;
     },
   };
 

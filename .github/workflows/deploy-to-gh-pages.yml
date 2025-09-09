@@ -1,0 +1,57 @@
+name: Deploy RTE to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write 
+
+concurrency:
+  group: gh-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy-extension:
+    name: Build & Deploy Rich Text Extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: yarn
+      
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install Lerna
+        run: |
+          npm i -g lerna@3.18.1
+
+      - name: Bootstrap workspace
+        run: lerna run bootstrap
+
+      - name: Build packages
+        env:
+          CI: false
+        run: lerna run build
+
+      - name: Configure git user
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      - name: Publish with gh-pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx gh-pages@1.2.0 \
+            -d packages/extension/build \
+            -b gh-pages \
+            -m "Deploy $GITHUB_SHA" \
+            --repo "https://x-access-token:${GH_TOKEN}@github.com/serenaandlily/dc-extension-rich-text.git"
